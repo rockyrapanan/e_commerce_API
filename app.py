@@ -19,7 +19,7 @@ db = SQLAlchemy(app)
 ma = Marshmallow(app)
 migrate = Migrate(app, db)
 
-# Models
+# Models: one-to-many relationship between User and Order models.
 class User(db.Model):# User model
     __tablename__ = "users"# Table name
     id = db.Column(db.Integer, primary_key=True)# Primary key
@@ -32,7 +32,8 @@ class Product(db.Model):
     name = db.Column(db.String(100), nullable=False)# Name 100 characters max.
     price = db.Column(db.Float, nullable=False)# Price float integer.
     stock = db.Column(db.Integer, nullable=False)# Stock integer.
-
+    
+# Order model: many-to-one relationship with User model.
 class Order(db.Model):
     __tablename__ = "orders"
     id = db.Column(db.Integer, primary_key=True)
